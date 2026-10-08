@@ -1,0 +1,55 @@
+/* Motion System: Timing tokens, easing, and house reveal sequence */
+
+:root {
+  --motion-duration-fast: 120ms;
+  --motion-duration-normal: 220ms;
+  --motion-duration-meaningful: 420ms;
+  --motion-easing: cubic-bezier(0.2, 0, 0, 1);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* House Reveal Keyframes */
+  @keyframes reveal-mark-stroke {
+    from {
+      opacity: 0;
+      stroke-dashoffset: 200;
+    }
+    to {
+      opacity: 1;
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes reveal-fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes reveal-level-crossfade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* Step 1: 0ms -> 420ms (Mark mới) */
+  .reveal-step-mark {
+    animation: reveal-mark-stroke var(--motion-duration-meaningful) var(--motion-easing) 0ms forwards;
+  }
+
+  /* Step 2: 180ms -> 600ms (Level changes) */
+  .reveal-step-level {
+    animation: reveal-level-crossfade var(--motion-duration-meaningful) var(--motion-easing) 180ms forwards;
+  }
+
+  /* Step 3: 360ms -> 780ms (Annotation) */
+  .reveal-step-annotation {
+    animation: reveal-fade-in var(--motion-duration-meaningful) var(--motion-easing) 360ms forwards;
+  }
+}

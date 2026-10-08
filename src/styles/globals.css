@@ -1,0 +1,53 @@
+@import './tokens.css';
+@import './base.css';
+@import './motion.css';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-family: var(--font-family-serif);
+  font-size: 16px;
+  line-height: var(--font-body-lineHeight);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-serif);
+  color: var(--color-text-primary);
+}
+
+button {
+  font-family: var(--font-family-sans);
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+button:focus-visible, a:focus-visible, input:focus-visible {
+  outline: var(--focus-width) solid var(--focus-outline);
+  outline-offset: var(--focus-offset);
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

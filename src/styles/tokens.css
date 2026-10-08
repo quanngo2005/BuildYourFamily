@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400;1,8..60,600&family=Source+Sans+3:ital,wght@0,400;0,600;1,400;1,600&display=swap');
+
+:root {
+  /* 3.1 Base Palette */
+  --color-bg-primary: #F5F1E8;
+  --color-bg-secondary: #ECE6D8;
+  --color-bg-surface: #FBF9F4;
+
+  --color-text-primary: #24221F;
+  --color-text-secondary: #5C574E;
+  --color-text-muted: #6F6A60;
+  --color-text-inverse: #F8F5EE;
+
+  --color-border-rule: #D8D1C4;
+  --color-border-default: #8F887B;
+  --color-border-strong: #6B655B;
+
+  --color-accent-primary: #2B5443;
+  --color-accent-primaryHover: #213F33;
+  --color-accent-secondary: #8A5632;
+
+  /* 3.2 House Palette */
+  --color-house-wood: #A96F45;
+  --color-house-woodLight: #C4976C;
+  --color-house-woodDark: #74503A;
+  --color-house-wall: #E4DDD0;
+  --color-house-foundation: #81766A;
+  --color-house-light: #E8C978;
+  --color-house-crack: #9B4B43;
+  --color-house-greenery: #5D765F;
+  --color-house-stroke: #24221F;
+  --house-stroke-width: 1.5px;
+  --house-stroke-width-emphasis: 2.5px;
+  /* 4. Typography */
+  --font-family-serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+  --font-family-sans: 'Source Sans 3', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  --font-display-size: clamp(2.5rem, 7vw, 5rem);
+  --font-display-weight: 600;
+  --font-display-lineHeight: 1.15;
+
+  --font-pageTitle-size: clamp(1.75rem, 4vw, 3rem);
+  --font-pageTitle-weight: 600;
+  --font-pageTitle-lineHeight: 1.2;
+
+  --font-sectionTitle-size: 1.25rem;
+  --font-sectionTitle-weight: 600;
+  --font-sectionTitle-lineHeight: 1.35;
+
+  --font-bodyLarge-size: 1.125rem;
+  --font-bodyLarge-weight: 400;
+  --font-bodyLarge-lineHeight: 1.7;
+
+  --font-body-size: 1rem;
+  --font-body-weight: 400;
+  --font-body-lineHeight: 1.65;
+
+  --font-bodySmall-size: 0.875rem;
+  --font-bodySmall-weight: 400;
+  --font-bodySmall-lineHeight: 1.55;
+
+  --font-label-size: 0.75rem;
+  --font-label-weight: 600;
+  --font-label-lineHeight: 1.35;
+  --font-label-letterSpacing: 0.04em;
+
+  --font-control-size: 1rem;
+  --font-control-weight: 600;
+  --font-control-lineHeight: 1.3;
+
+  /* 5. Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 0.75rem;
+  --spacing-lg: 1rem;
+  --spacing-xl: 1.5rem;
+  --spacing-2xl: 2rem;
+  --spacing-3xl: 3rem;
+  --spacing-4xl: 4rem;
+  --spacing-5xl: 6rem;
+
+  /* 6. Layout */
+  --layout-maxContentWidth: 72rem;
+  --layout-readingWidth: 42rem;
+  --layout-narrowReadingWidth: 34rem;
+  
+  --layout-pagePadding-mobile: 1.25rem;
+  --layout-pagePadding-tablet: 2rem;
+  --layout-pagePadding-desktop: 3rem;
+  
+  --layout-houseArea-minHeight: 28rem;
+
+  /* 7. Border */
+  --border-width-rule: 1px;
+  --border-width-control: 1px;
+  --border-width-strong: 1.5px;
+  
+  --border-radius-none: 0;
+  --border-radius-subtle: 2px;
+  --border-radius-interactive: 4px;
+
+  /* 8. Shadow */
+  --shadow-none: none;
+  --shadow-dialog: 0 1px 3px rgba(36, 34, 31, 0.08);
+
+  /* 9. Interaction */
+  --transition-fast: 120ms;
+  --transition-normal: 220ms;
+  --transition-meaningful: 420ms;
+  
+  --easing: cubic-bezier(0.2, 0, 0, 1);
+  
+  --focus-width: 2px;
+  --focus-offset: 3px;
+  --focus-outline: var(--color-accent-primary);
+
+  /* 11. Choice Tokens */
+  --choice-minHeight: 4.5rem;
+  --choice-verticalPadding: 1rem;
+  --choice-separator: var(--color-border-rule);
+  --choice-marker-boundary: var(--color-border-default);
+  --choice-marker-boundaryHover: var(--color-border-strong);
+  --choice-marker-boundarySelected: var(--color-accent-primary);
+  --choice-marker-boundaryDisabled: var(--color-border-rule);
+  --choice-text-default: var(--color-text-primary);
+  --choice-text-disabled: var(--color-text-muted);
+  --choice-bg-default: transparent;
+  --choice-bg-hover: var(--color-bg-surface);
+  --choice-bg-selected: var(--color-bg-surface);
+  --choice-bg-disabled: transparent;
+
+  /* 12. Primary Action Tokens */
+  --primaryAction-minHeight: 2.75rem;
+  --primaryAction-horizontalPadding: 1.25rem;
+
+  /* 13. Progress Indicator Tokens */
+  --progress-inactive: var(--color-border-default);
+  --progress-current: var(--color-accent-primary);
+  --progress-completed: var(--color-accent-secondary);
+  --progress-lineWidth: 1px;
+  --progress-markerSize: 0.45rem;
+
+  /* 14.2 Score & Annotation Tokens */
+  --annotation-leaderLine-color: var(--color-house-stroke);
+  --annotation-leaderLine-width: 1px;
+  --annotation-label-color: var(--color-text-primary);
+  --annotation-marker-size: 0.45rem;
+  --annotation-marker-color: var(--color-house-stroke);
+
+  /* --- Legacy alias layer ---
+     Some component CSS was authored against shorthand names that do not
+     exist in the token spec above. Map them here so every file resolves
+     to the real spec'd values instead of silently falling back to
+     browser defaults. Prefer the canonical names (above) in new code. */
+  --color-border: var(--color-border-default);
+  --color-surface: var(--color-bg-surface);
+  --color-background: var(--color-bg-primary);
+  --color-text-tertiary: var(--color-text-muted);
+
+  --font-family-mono: var(--font-family-sans);
+
+  --font-size-sm: var(--font-bodySmall-size);
+  --font-size-base: var(--font-body-size);
+  --font-size-lg: var(--font-bodyLarge-size);
+  --font-size-xl: var(--font-sectionTitle-size);
+  --font-size-2xl: var(--font-pageTitle-size);
+  --font-size-3xl: var(--font-pageTitle-size);
+  --font-size-4xl: var(--font-display-size);
+
+  --line-height-normal: var(--font-body-lineHeight);
+  --line-height-relaxed: var(--font-bodyLarge-lineHeight);
+
+  --space-1: var(--spacing-xs);
+  --space-2: var(--spacing-sm);
+  --space-3: var(--spacing-md);
+  --space-4: var(--spacing-lg);
+  --space-6: var(--spacing-xl);
+  --space-8: var(--spacing-2xl);
+}

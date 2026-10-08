@@ -1,0 +1,50 @@
+/* Base styles, reset, focus ring, accessibility */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: var(--font-family-sans);
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  line-height: var(--font-body-lineHeight);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+}
+
+/* Accessible focus ring: 2px with 3px offset */
+:focus-visible {
+  outline: var(--focus-width) solid var(--focus-outline);
+  outline-offset: var(--focus-offset);
+}
+
+/* Links and buttons minimal baseline */
+button {
+  font-family: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

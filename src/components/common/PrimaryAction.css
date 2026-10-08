@@ -1,0 +1,29 @@
+.nha-primary-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--primaryAction-minHeight, 2.75rem);
+  padding: 0 var(--primaryAction-horizontalPadding, 1.25rem);
+  background-color: var(--color-accent-primary);
+  color: var(--color-text-inverse);
+  border: var(--border-width-control) solid var(--color-accent-primary);
+  border-radius: var(--border-radius-interactive);
+  font-family: var(--font-family-sans);
+  font-size: var(--font-control-size);
+  font-weight: var(--font-control-weight);
+  line-height: var(--font-control-lineHeight);
+  cursor: pointer;
+  transition: background-color var(--transition-fast) var(--easing),
+              border-color var(--transition-fast) var(--easing);
+  width: 100%;
+}
+
+.nha-primary-action:hover:not(:disabled) {
+  background-color: var(--color-accent-primaryHover);
+  border-color: var(--color-accent-primaryHover);
+}
+
+.nha-primary-action:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

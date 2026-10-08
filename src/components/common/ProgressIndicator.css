@@ -1,0 +1,74 @@
+.nha-progress-nav {
+  position: relative;
+  width: 100%;
+  padding-bottom: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
+}
+
+.nha-progress-steps {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.nha-progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.nha-progress-label {
+  font-family: var(--font-family-sans);
+  font-size: var(--font-label-size);
+  font-weight: var(--font-label-weight);
+  letter-spacing: var(--font-label-letterSpacing);
+  color: var(--color-text-muted);
+}
+
+.nha-progress-marker {
+  width: var(--progress-markerSize, 0.45rem);
+  height: var(--progress-markerSize, 0.45rem);
+  border-radius: 50%;
+  background-color: var(--color-bg-primary);
+  border: 1px solid var(--color-border-default);
+  transition: all var(--transition-fast) var(--easing);
+}
+
+/* Completed: filled accent.secondary */
+.nha-progress-step.is-completed .nha-progress-marker {
+  background-color: var(--color-accent-secondary);
+  border-color: var(--color-accent-secondary);
+}
+.nha-progress-step.is-completed .nha-progress-label {
+  color: var(--color-text-secondary);
+}
+
+/* Current: distinguished by shape (square/diamond) AND weight, not just color! */
+.nha-progress-step.is-current .nha-progress-marker {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: var(--border-radius-none);
+  background-color: var(--color-accent-primary);
+  border: 1.5px solid var(--color-accent-primary);
+  transform: rotate(45deg);
+}
+.nha-progress-step.is-current .nha-progress-label {
+  color: var(--color-text-primary);
+  font-weight: 700;
+}
+
+/* Hairline rule behind markers */
+.nha-progress-hairline {
+  position: absolute;
+  bottom: calc(var(--spacing-sm) + 0.25rem);
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: var(--color-border-rule);
+  z-index: 1;
+}

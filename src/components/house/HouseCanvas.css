@@ -1,0 +1,28 @@
+.nha-house-canvas-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nha-house-svg {
+  width: 100%;
+  height: auto;
+  max-height: 520px;
+  display: block;
+  overflow: visible;
+}
+
+/* Base stroke settings */
+.nha-house-svg line,
+.nha-house-svg path,
+.nha-house-svg rect,
+.nha-house-svg polygon,
+.nha-house-svg circle,
+.nha-house-svg polyline {
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}

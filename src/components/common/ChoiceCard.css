@@ -1,0 +1,69 @@
+.nha-choice-card {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-lg);
+  width: 100%;
+  min-height: var(--choice-minHeight, 4.5rem);
+  padding: var(--choice-verticalPadding, 1rem) var(--spacing-md);
+  background-color: var(--choice-bg-default);
+  border: none;
+  border-bottom: var(--border-width-rule) solid var(--choice-separator);
+  border-radius: var(--border-radius-subtle);
+  text-align: left;
+  cursor: pointer;
+  transition: background-color var(--transition-fast) var(--easing);
+}
+
+.nha-choice-card:first-child {
+  border-top: var(--border-width-rule) solid var(--choice-separator);
+}
+
+.nha-choice-card:hover:not(:disabled) {
+  background-color: var(--choice-bg-hover);
+}
+
+.nha-choice-marker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: var(--border-width-control) solid var(--choice-marker-boundary);
+  border-radius: 50%;
+  font-family: var(--font-family-sans);
+  font-size: var(--font-label-size);
+  font-weight: var(--font-label-weight);
+  color: var(--color-text-secondary);
+  transition: border-color var(--transition-fast) var(--easing),
+              background-color var(--transition-fast) var(--easing),
+              color var(--transition-fast) var(--easing);
+  margin-top: 0.15rem;
+}
+
+.nha-choice-card:hover:not(:disabled) .nha-choice-marker {
+  border-color: var(--choice-marker-boundaryHover);
+  color: var(--color-text-primary);
+}
+
+.nha-choice-card.nha-choice-selected {
+  background-color: var(--choice-bg-selected);
+}
+
+.nha-choice-card.nha-choice-selected .nha-choice-marker {
+  border-color: var(--choice-marker-boundarySelected);
+  background-color: var(--color-accent-primary);
+  color: var(--color-text-inverse);
+}
+
+.nha-choice-card:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.nha-choice-text {
+  font-family: var(--font-family-serif);
+  font-size: var(--font-bodyLarge-size);
+  line-height: var(--font-bodyLarge-lineHeight);
+  color: var(--choice-text-default);
+}

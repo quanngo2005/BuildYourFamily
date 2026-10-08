@@ -1,0 +1,30 @@
+.nha-app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--color-bg-primary);
+  padding: var(--layout-pagePadding-mobile);
+}
+
+@media (min-width: 640px) {
+  .nha-app-shell {
+    padding: var(--layout-pagePadding-tablet);
+  }
+}
+
+@media (min-width: 1024px) {
+  .nha-app-shell {
+    padding: var(--layout-pagePadding-desktop);
+  }
+}
+
+.nha-app-container {
+  width: 100%;
+  max-width: var(--layout-readingWidth);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2xl);
+  flex-grow: 1;
+  margin: 0 auto;
+}

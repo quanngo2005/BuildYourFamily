@@ -1,0 +1,55 @@
+.nha-intro-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2xl);
+  margin-top: var(--spacing-xl);
+}
+
+.nha-intro-narrative {
+  font-family: var(--font-family-serif);
+  font-size: var(--font-bodyLarge-size);
+  line-height: var(--font-bodyLarge-lineHeight);
+  color: var(--color-text-primary);
+}
+
+.nha-intro-narrative p {
+  margin-bottom: var(--spacing-md);
+}
+
+.nha-intro-narrative ul {
+  padding-left: var(--spacing-xl);
+  margin-bottom: var(--spacing-lg);
+}
+
+.nha-intro-narrative li {
+  margin-bottom: var(--spacing-xs);
+}
+
+.nha-how-to-play {
+  font-family: var(--font-family-sans);
+  font-size: var(--font-body-size);
+  line-height: var(--font-body-lineHeight);
+  color: var(--color-text-secondary);
+  border-left: var(--border-width-rule) solid var(--color-border-rule);
+  padding-left: var(--spacing-lg);
+}
+
+.nha-how-to-play p {
+  margin-bottom: var(--spacing-xs);
+  color: var(--color-text-primary);
+}
+
+.nha-how-to-play ol {
+  padding-left: var(--spacing-lg);
+}
+
+.nha-how-to-play li {
+  margin-bottom: var(--spacing-xs);
+}
+
+.nha-intro-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--spacing-xl);
+  margin-bottom: var(--spacing-2xl);
+}

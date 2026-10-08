@@ -1,0 +1,43 @@
+.nha-knowledge-content {
+  margin-top: var(--spacing-lg);
+  margin-bottom: var(--spacing-2xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+.nha-knowledge-intro {
+  font-family: var(--font-family-serif);
+  font-size: var(--font-body-size);
+  color: var(--color-text-secondary);
+  font-style: italic;
+  margin: 0;
+}
+
+.nha-knowledge-card {
+  padding-top: var(--spacing-lg);
+  border-top: var(--border-width-rule) solid var(--color-border-rule);
+}
+
+.nha-knowledge-title {
+  font-family: var(--font-family-serif);
+  font-size: var(--font-sectionTitle-size);
+  font-weight: var(--font-sectionTitle-weight);
+  line-height: var(--font-sectionTitle-lineHeight);
+  color: var(--color-text-primary);
+  margin: 0 0 var(--spacing-xs) 0;
+}
+
+.nha-knowledge-text {
+  font-family: var(--font-family-serif);
+  font-size: var(--font-body-size);
+  line-height: var(--font-body-lineHeight);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.nha-knowledge-actions {
+  display: flex;
+  justify-content: center;
+  margin-bottom: var(--spacing-2xl);
+}
