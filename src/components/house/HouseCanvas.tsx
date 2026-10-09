@@ -123,27 +123,33 @@ export const HouseCanvas: React.FC<HouseCanvasProps> = ({
         {isRevealing && deltas && <ZoneImpactLayer deltas={deltas} />}
       </svg>
 
-      {showLegend && (
-        <ul className="nha-house-legend" aria-label="Ý nghĩa các phần của ngôi nhà">
-          {LEGEND_ORDER.map((dim) => {
-            const parts = ROLE_TAGS.filter((t) => t.dim === dim).map((t) => t.name).join(" & ");
-            return (
-              <li
-                key={dim}
-                className={`nha-house-legend-item level-${levels[dim].toLowerCase()} ${activeDims.includes(dim) ? "is-active" : ""}`}
-                style={{ "--tag-color": DIMENSION_COLOR[dim] } as React.CSSProperties}
-              >
-                <span className="nha-legend-icon" aria-hidden="true">{DIMENSION_ICON[dim]}</span>
-                <span className="nha-legend-text">
-                  <strong>{DIMENSION_LABEL_VI[dim]}</strong>
-                  <small>{parts}</small>
-                </span>
-                <span className="nha-legend-level">{TIER_LABEL_VI[levels[dim]]}</span>
-              </li>
-            );
-          })}
-        </ul>
-      )}
+      {showLegend && <HouseLegend levels={levels} activeDims={activeDims} />}
     </div>
   );
 };
+
+// Legend explaining what each part of the house stands for and its current level
+export const HouseLegend: React.FC<{
+  levels: Record<Dimension, TierLevel>;
+  activeDims?: Dimension[];
+}> = ({ levels, activeDims = [] }) => (
+  <ul className="nha-house-legend" aria-label="Ý nghĩa các phần của ngôi nhà">
+    {LEGEND_ORDER.map((dim) => {
+      const parts = ROLE_TAGS.filter((t) => t.dim === dim).map((t) => t.name).join(" & ");
+      return (
+        <li
+          key={dim}
+          className={`nha-house-legend-item level-${levels[dim].toLowerCase()} ${activeDims.includes(dim) ? "is-active" : ""}`}
+          style={{ "--tag-color": DIMENSION_COLOR[dim] } as React.CSSProperties}
+        >
+          <span className="nha-legend-icon" aria-hidden="true">{DIMENSION_ICON[dim]}</span>
+          <span className="nha-legend-text">
+            <strong>{DIMENSION_LABEL_VI[dim]}</strong>
+            <small>{parts}</small>
+          </span>
+          <span className="nha-legend-level">{TIER_LABEL_VI[levels[dim]]}</span>
+        </li>
+      );
+    })}
+  </ul>
+);

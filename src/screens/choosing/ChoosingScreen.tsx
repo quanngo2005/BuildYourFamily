@@ -35,32 +35,38 @@ export function ChoosingScreen() {
   if (!scenario) return null;
 
   return (
-    <AppShell>
+    <AppShell wide>
       <header className="nha-scenario-header">
         <h2 className="nha-scenario-title">{scenario.title}</h2>
         <ProgressIndicator current={currentIndex} total={total} />
       </header>
 
-      <HouseCanvas levels={houseData.levels} marks={houseData.marks} />
+      <div className="nha-scenario-split">
+        <aside className="nha-scenario-house" aria-label="Ngôi nhà hiện tại">
+          <HouseCanvas levels={houseData.levels} marks={houseData.marks} />
+        </aside>
 
-      <section className="nha-scenario-context">
-        <p>{scenario.context}</p>
-      </section>
+        <div className="nha-scenario-content">
+          <section className="nha-scenario-context">
+            <p>{scenario.context}</p>
+          </section>
 
-      <section className="nha-decision-section">
-        <h3 id="decision-prompt" className="nha-decision-prompt">{scenario.question}</h3>
-        <div className="nha-choice-list" role="group" aria-labelledby="decision-prompt">
-          {(["A", "B", "C"] as ChoiceId[]).map((c) => (
-            <ChoiceCard
-              key={c}
-              label={c}
-              text={scenario.choices[c].text}
-              state={isLocked ? "disabled" : "default"}
-              onClick={() => handleSelectChoice(c)}
-            />
-          ))}
+          <section className="nha-decision-section">
+            <h3 id="decision-prompt" className="nha-decision-prompt">{scenario.question}</h3>
+            <div className="nha-choice-list" role="group" aria-labelledby="decision-prompt">
+              {(["A", "B", "C"] as ChoiceId[]).map((c) => (
+                <ChoiceCard
+                  key={c}
+                  label={c}
+                  text={scenario.choices[c].text}
+                  state={isLocked ? "disabled" : "default"}
+                  onClick={() => handleSelectChoice(c)}
+                />
+              ))}
+            </div>
+          </section>
         </div>
-      </section>
+      </div>
     </AppShell>
   );
 }

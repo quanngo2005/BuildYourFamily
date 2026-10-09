@@ -4,7 +4,7 @@ import { SCENARIOS } from "../../content/scenarios";
 import { DELTAS } from "../../content/deltas";
 import { SCENARIO_ORDER } from "../../game/reducer";
 import { AppShell, ProgressIndicator, PrimaryAction } from "../../components/common";
-import { HouseCanvas } from "../../components/house/HouseCanvas";
+import { HouseCanvas, HouseLegend } from "../../components/house/HouseCanvas";
 import { AnnotationOverlay, type AnnotationItem } from "../../components/shared/AnnotationOverlay";
 import { deriveHouseState } from "../../house/deriveHouseState";
 import { useHouseGeometry } from "../../house/useHouseGeometry";
@@ -39,39 +39,50 @@ export function FeedbackScreen() {
     }));
 
   return (
-    <AppShell>
+    <AppShell wide>
       <header className="nha-scenario-header">
         <h2 className="nha-scenario-title">Hậu quả</h2>
         <ProgressIndicator current={currentIndex} total={total} />
       </header>
 
-      {/* House Canvas with Annotation Overlay */}
-      <div ref={houseContainerRef} className="nha-feedback-house-container">
-        <HouseCanvas
-          levels={houseData.levels}
-          marks={houseData.marks}
-          emphasizedMark={state.currentScenario}
-          revealState={revealState}
-          deltas={delta}
-        />
-        <AnnotationOverlay
-          annotations={annotations}
-          containerSize={size}
-          isLeaderMode={isLeaderMode}
-          animate={isRevealing}
-        />
-      </div>
+      <div className="nha-scenario-split">
+        <aside className="nha-scenario-house" aria-label="Ngôi nhà sau lựa chọn">
+          {/* House Canvas with Annotation Overlay (legend kept outside the measured box) */}
+          <div ref={houseContainerRef} className="nha-feedback-house-container">
+            <HouseCanvas
+              levels={houseData.levels}
+              marks={houseData.marks}
+              emphasizedMark={state.currentScenario}
+              revealState={revealState}
+              deltas={delta}
+              showLegend={false}
+            />
+            <AnnotationOverlay
+              annotations={annotations}
+              containerSize={size}
+              isLeaderMode={isLeaderMode}
+              animate={isRevealing}
+            />
+          </div>
+          <HouseLegend
+            levels={houseData.levels}
+            activeDims={isRevealing ? annotations.map((a) => a.dimension) : []}
+          />
+        </aside>
 
-      <section className="nha-consequence">
-        <p className="nha-consequence-narrative">{choice.consequence}</p>
-        <p className="nha-consequence-feedback">{choice.feedback}</p>
-      </section>
+        <div className="nha-scenario-content">
+          <section className="nha-consequence">
+            <p className="nha-consequence-narrative">{choice.consequence}</p>
+            <p className="nha-consequence-feedback">{choice.feedback}</p>
+          </section>
 
-      <div className="nha-feedback-actions">
-        <PrimaryAction 
-          label="Khám phá tri thức" 
-          onClick={() => setUiScreen("knowledge")} 
-        />
+          <div className="nha-feedback-actions">
+            <PrimaryAction 
+              label="Khám phá tri thức" 
+              onClick={() => setUiScreen("knowledge")} 
+            />
+          </div>
+        </div>
       </div>
     </AppShell>
   );
