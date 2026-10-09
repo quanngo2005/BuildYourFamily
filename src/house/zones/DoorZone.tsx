@@ -53,6 +53,22 @@ export const DoorZone: React.FC<ZoneProps> = ({ level }) => {
         {/* Open threshold line */}
         <line x1="205" y1="500" x2="305" y2="500" stroke="var(--color-house-stroke)" strokeWidth="var(--house-stroke-width-emphasis)" vectorEffect="non-scaling-stroke" />
       </g>
+      {/* Entrance hall: doormat for all; coat rack, shoes and wall light once the home is welcoming */}
+      <rect x="208" y="497" width="94" height="4" rx="1" fill="var(--color-house-crack)" opacity="0.7" />
+      <g style={{ opacity: level === "LOW" ? 0 : 1, transition: "opacity var(--transition-meaningful) var(--easing)" }}>
+        {/* Wall sconce above the door */}
+        <rect x="249" y="350" width="12" height="10" rx="2" fill="var(--color-house-light)" stroke="var(--color-house-stroke)" vectorEffect="non-scaling-stroke" />
+        <circle className="nha-lamp-glow" cx="255" cy="356" r="12" fill="var(--color-house-light)" opacity="0.4" />
+        {/* Coat rack with a coat and a hat */}
+        <line x1="335" y1="395" x2="335" y2="500" stroke="var(--color-house-stroke)" strokeWidth="2" vectorEffect="non-scaling-stroke" />
+        <line x1="325" y1="500" x2="345" y2="500" stroke="var(--color-house-stroke)" strokeWidth="2" vectorEffect="non-scaling-stroke" />
+        <path d="M 325 402 l 10 -6 l 10 6" fill="none" stroke="var(--color-house-stroke)" strokeWidth="2" vectorEffect="non-scaling-stroke" />
+        <path d="M 327 404 h 14 l 4 40 h -22 z" fill="var(--color-house-greenery)" stroke="var(--color-house-stroke)" vectorEffect="non-scaling-stroke" />
+        <path d="M 340 398 q 8 -10 14 0 z" fill="var(--color-house-woodDark)" stroke="var(--color-house-stroke)" vectorEffect="non-scaling-stroke" />
+        {/* Shoes by the door */}
+        <path d="M 312 500 v -6 h 6 q 6 2 8 6 z" fill="var(--color-house-woodDark)" stroke="var(--color-house-stroke)" vectorEffect="non-scaling-stroke" />
+        <path d="M 352 500 v -5 h 5 q 5 2 6 5 z" fill="var(--color-house-crack)" stroke="var(--color-house-stroke)" vectorEffect="non-scaling-stroke" />
+      </g>
     </g>
   );
 };

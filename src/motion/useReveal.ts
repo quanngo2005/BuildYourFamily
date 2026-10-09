@@ -17,7 +17,7 @@ export function useReveal(scenarioId?: string) {
     if (revealState === "revealing") {
       const timer = window.setTimeout(() => {
         setRevealState("static");
-      }, 1300);
+      }, 1900);
       return () => clearTimeout(timer);
     }
   }, [revealState]);

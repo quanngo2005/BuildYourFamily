@@ -26,6 +26,7 @@ export function FeedbackScreen() {
   const houseData = deriveHouseState(state.scores, state.history);
   const { size, isLeaderMode } = useHouseGeometry(houseContainerRef);
   const { revealState } = useReveal(state.currentScenario);
+  const isRevealing = revealState === "revealing";
 
   if (!scenario || !choice || !choiceId) return null;
 
@@ -51,11 +52,13 @@ export function FeedbackScreen() {
           marks={houseData.marks}
           emphasizedMark={state.currentScenario}
           revealState={revealState}
+          deltas={delta}
         />
         <AnnotationOverlay
           annotations={annotations}
           containerSize={size}
           isLeaderMode={isLeaderMode}
+          animate={isRevealing}
         />
       </div>
 

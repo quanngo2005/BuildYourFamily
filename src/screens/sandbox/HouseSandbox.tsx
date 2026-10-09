@@ -1,4 +1,5 @@
 import { useState } from "react";
+import type { ImpactDeltas } from "../../house/effects/ZoneImpactLayer";
 import { HouseCanvas } from "../../components/house/HouseCanvas";
 import type { Dimension, Zone, Kind } from "../../game/types";
 import type { TierLevel, DerivedMark } from "../../house/deriveHouseState";
@@ -17,6 +18,13 @@ export function HouseSandbox() {
 
   const [marks, setMarks] = useState<DerivedMark[]>([]);
   const [viewportWidth, setViewportWidth] = useState<"360px" | "768px" | "100%">("100%");
+  const [fx, setFx] = useState<{ deltas: ImpactDeltas; key: number } | null>(null);
+
+  const playFx = (deltas: ImpactDeltas) => {
+    const key = Date.now();
+    setFx({ deltas, key });
+    window.setTimeout(() => setFx((cur) => (cur?.key === key ? null : cur)), 1900);
+  };
   const [emphasizedMark, setEmphasizedMark] = useState<string | undefined>(undefined);
 
   const handleTierChange = (dim: Dimension, tier: TierLevel) => {
@@ -65,6 +73,10 @@ export function HouseSandbox() {
           <button onClick={() => setAllTiers("LOW")} className="btn-preset">Tất cả LOW</button>
           <button onClick={() => setAllTiers("MID")} className="btn-preset">Tất cả MID</button>
           <button onClick={() => setAllTiers("HIGH")} className="btn-preset">Tất cả HIGH</button>
+          <span> | Hiệu ứng: </span>
+          <button onClick={() => playFx({ economy: 16, education: 8, equality: 6, emotion: 4 })} className="btn-preset">Tăng điểm</button>
+          <button onClick={() => playFx({ economy: -16, education: -6, equality: -8, emotion: -4 })} className="btn-preset">Giảm điểm</button>
+          <button onClick={() => playFx({ economy: -8, education: 22, equality: 0, emotion: -2 })} className="btn-preset">Hỗn hợp</button>
           <span> | Viewport: </span>
           <button onClick={() => setViewportWidth("360px")} className={`btn-preset ${viewportWidth === "360px" ? "active" : ""}`}>360px</button>
           <button onClick={() => setViewportWidth("768px")} className={`btn-preset ${viewportWidth === "768px" ? "active" : ""}`}>768px</button>
@@ -75,6 +87,9 @@ export function HouseSandbox() {
       <main className="sandbox-main">
         <div className="sandbox-canvas-viewport-frame" style={{ maxWidth: viewportWidth }}>
           <HouseCanvas
+            key={fx?.key ?? "static"}
+            revealState={fx ? "revealing" : "static"}
+            deltas={fx?.deltas}
             levels={levels}
             marks={marks}
             emphasizedMark={emphasizedMark}
